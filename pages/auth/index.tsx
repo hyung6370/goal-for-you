@@ -1,4 +1,4 @@
-import Input from "@/components/auth/Input";
+import Input from "@/components/Auth/Input";
 import axios from "axios";
 import { useCallback, useState } from "react";
 import { signIn } from 'next-auth/react';
@@ -90,7 +90,7 @@ const Auth = () => {
                             />
                         </div>
                         <button onClick={variant === 'login' ? login : register} className="w-full py-3 mt-10 text-white transition bg-purple-700 rounded-3xl hover:bg-purple-500 ">
-                            {variant === 'login' ? 'Login' : 'Sign up'}
+                            {variant === 'login' ? '로그인' : '계정 생성'}
                         </button>
                         <div className="flex flex-row items-center justify-center gap-4 mt-8">
                             <div
