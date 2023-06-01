@@ -37,6 +37,19 @@
     transition transform duration-100 ease-out
 }
 
+.logout_btn {
+    @apply
+    flex w-24 h-7 flex-col 
+    rounded-3xl
+    items-center mt-3 
+    border-2 border-purple-500 text-white bg-purple-500
+    hover:text-purple-900
+    hover:bg-purple-300
+    hover:border-purple-300
+    cursor-pointer hover:shadow-lg active:scale-95
+    transition transform duration-100 ease-out
+}
+
 .font_kor_medium {
     font-family: GmarketSansTTFMedium;
 }

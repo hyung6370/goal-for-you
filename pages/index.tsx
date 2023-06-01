@@ -52,8 +52,6 @@ export default function Home() {
         </div>
         </div>
 
-        {/* <button className="w-full h-10 bg-purple-600" onClick={() => signOut()} >로그아웃</button> */}
-        {/* <h1>홈!</h1> */}
       </div>
     </div>
   )

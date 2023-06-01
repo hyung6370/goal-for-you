@@ -22,13 +22,18 @@ export async function getServerSideProps(context: NextPageContext) {
 export default function Header() {
     return (
         <div>
-            <div className="flex flex-row items-center px-4 py-6 transition duration-500 md:px-16">
+            <div className="flex flex-row items-center justify-between px-4 py-6 transition duration-500 md:px-16">
                 <Link href='/'>
                     <div className="flex flex-row items-center justify-center">
                         <img src="/img/logo.png" alt="Logo" className="logo-image" />
                         <h1 className="ml-2 text-2xl font_here">Goal for you</h1>
                     </div>
                 </Link>
+                <button
+                    onClick={() => signOut()}
+                    className="mb-1 logout_btn font_kor_medium">
+                    Logout
+                </button>
             </div>
             
             <hr className="border-gray-400 border-1" />
