@@ -10,6 +10,41 @@
     src: url('/font/MontserratAlternates-Bold.ttf') format("truetype");
 }
 
+@font-face {
+    font-family: 'GmarketSansTTFMedium';
+    font-style: normal;
+    font-weight:400;
+    src: url('../public/font/GmarketSansTTFMedium.ttf') format("ttf");
+}
+  
+@font-face {
+    font-family: 'GmarketSansTTFLight';
+    font-style: normal;
+    font-weight:400;
+    src: url('../public/font/GmarketSansTTFLight.ttf') format("ttf");
+}
+
+.choice_btn {
+    @apply
+    flex w-32 h-7 flex-col 
+    rounded-3xl
+    items-center mt-3 
+    border-2 border-purple-400 text-white bg-purple-400
+    hover:text-purple-600
+    hover:bg-purple-200
+    hover:border-fuchsia-200
+    cursor-pointer hover:shadow-lg active:scale-95
+    transition transform duration-100 ease-out
+}
+
+.font_kor_medium {
+    font-family: GmarketSansTTFMedium;
+}
+
+.font_kor_light {
+    font-family: GmarketSansTTFLight;
+}
+
 .font_here {
     font-family: MontserratAlternates;
 }
