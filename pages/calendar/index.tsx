@@ -4,47 +4,12 @@ import { format, addMonths, subMonths } from 'date-fns';
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import { isSameMonth, isSameDay, addDays, parse } from 'date-fns';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import RenderHeader from "@/components/Calendar/RenderHeader";
+import RenderDays from "@/components/Calendar/RenderDays";
 
-interface RenderHeaderProps {
-    currentMonth: Date;
-    prevMonth: () => void;
-    nextMonth: () => void;
-}
 
-const RenderHeader: React.FC<RenderHeaderProps> = ({
-     currentMonth, prevMonth, nextMonth
-    }) => {
-    return (
-        <div>
-            <div>
-                <span>
-                    <span>
-                        {format(currentMonth, 'M')}월
-                    </span>
-                    {format(currentMonth, 'yyyy')}
-                </span>
-            </div>
-            <div>
-                <FaArrowLeft />
-                <FaArrowRight />
-            </div>
-        </div>
-    )
-}
 
-const RenderDays = () => {
-    const days = [];
-    const date = ['Sun', 'Mon', 'Thu', 'Wed', 'Thrs', 'Fri', 'Sat'];
 
-    for (let i = 0; i < 7; i++) {
-        days.push(
-            <div key={i}>
-                {date[i]}
-            </div>
-        );
-    }
-    return <div>{days}</div>;
-}
 
 // const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
 //     const MonthStart = startOfMonth(currentMonth);
@@ -76,18 +41,33 @@ const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(new Date());
 
+    const prevMonth = () => {
+        setCurrentMonth(subMonths(currentMonth, 1));
+    };
 
+    const nextMonth = () => {
+        setCurrentMonth(addMonths(currentMonth, 1));
+    };
+
+    const onDateClick = (day: React.SetStateAction<Date>) => {
+        setSelectedDate(day);
+    };
 
     return (
         <Layout>
-            <div className="calendar">
-                <div className="header">Header</div>
-                <div className="days">Days</div>
-                <div className="body">Cells</div>
+            <div className="flex justify-center h-screen">
+                <div className="w-5/6 border-2 border-purple-400 rounded-lg shadow">
+                <RenderHeader
+                    currentMonth={currentMonth}
+                    prevMonth={prevMonth}
+                    nextMonth={nextMonth}
+                />
+                <RenderDays />
+                </div>
             </div>
             
         </Layout>
-    )
-}
+    );
+};
 
 export default Calendar;
