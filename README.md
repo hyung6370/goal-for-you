@@ -1,6 +1,7 @@
 # 🚀 **이루고 싶은 목표를 달성하도록 도와주는 Goal For You 입니다** ✨
-
-![](/public/readmeImg/logo.png)
+<p align="center">
+<img src="./public/readmeImg/logo.png" width="350" height="200" >
+</p>
 <br />
 
 <!-- <hr /> -->
