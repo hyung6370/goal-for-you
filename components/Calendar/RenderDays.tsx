@@ -1,25 +1,17 @@
 const RenderDays = () => {
     const days = [];
-    const date = ['Sun', 'Mon', 'Thu', 'Wed', 'Thr', 'Fri', 'Sat'];
-  
+    const date = ['Sun', 'Mon', 'Thu', 'Wed', 'Thrs', 'Fri', 'Sat'];
+
     for (let i = 0; i < 7; i++) {
-      days.push(
-        <div className="flex justify-center ml-3" key={i}>
-          <div className="grid grid-cols-7 gap-4 border-b border-fuchsia-500">
-            <div className="text-center">
-              {date[i]}
-            </div>
-          </div>
-        </div>
-      );
+        days.push(
+            <div className="col" key={i}>
+                {date[i]}
+            </div>,
+        );
     }
-    
-    return (
-      <div className="flex flex-row justify-between mr-3">
-        {days}
-      </div>
-    );
-  };
+
+    return <div className="days row">{days}</div>;
+};
   
   export default RenderDays;
   

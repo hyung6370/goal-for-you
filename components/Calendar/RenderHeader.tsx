@@ -9,31 +9,24 @@ interface RenderHeaderProps {
     nextMonth: () => void;
 }
 
-const RenderHeader: React.FC<RenderHeaderProps> = ({
-     currentMonth, prevMonth, nextMonth
-    }) => {
+const RenderHeader: React.FC<RenderHeaderProps> = ({ currentMonth, prevMonth, nextMonth }) => {
     return (
-        <div className="flex flex-row justify-between">
-            <div className="flex flex-col">
-                <span className="m-4 text-xl font_kor_light">
-                    <span className="text-3xl font_kor_light">
+        <div className="header row">
+            <div className="col col-start">
+                <span className="font_kor_light">
+                    <span className="mr-1 text-3xl">
                         {format(currentMonth, 'M')}월
                     </span>
                     {format(currentMonth, 'yyyy')}
                 </span>
             </div>
-            <div className="flex flex-row m-4">
-                <FaArrowLeft 
-                    className='w-6 h-6 cursor-pointer'
-                    onClick={prevMonth}
-                />
-                <FaArrowRight 
-                    className='w-6 h-6 ml-2 cursor-pointer' 
-                    onClick={nextMonth}
-                />
+            <div className="col col-end">
+                <FaArrowLeft onClick={prevMonth} />
+                <FaArrowRight onClick={nextMonth} />
+
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default RenderHeader;

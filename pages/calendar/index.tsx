@@ -1,41 +1,9 @@
 import Layout from "@/components/Home/Layout";
 import React, { useState } from "react";
 import { format, addMonths, subMonths } from 'date-fns';
-import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
-import { isSameMonth, isSameDay, addDays, parse } from 'date-fns';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import RenderHeader from "@/components/Calendar/RenderHeader";
 import RenderDays from "@/components/Calendar/RenderDays";
-
-
-
-
-
-// const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
-//     const MonthStart = startOfMonth(currentMonth);
-//     const monthEnd = endOfMonth(monthStart);
-//     const startDate = startOfWeek(monthStart);
-//     const endDate = endOfWeek(monthEnd);
-
-//     const rows = [];
-//     let days = [];
-//     let day = startDate;
-//     let formattedDate = '';
-
-//     while (day <= endDate) {
-//         for (let i = 0; i < 7; i++) {
-//             formattedDate = format(day, 'd');
-//             const cloneDay = day;
-//             days.push(
-//                 <div
-                
-//                 >
-
-//                 </div>
-//             )
-//         }
-//     }
-// }
+import RenderCells from "@/components/Calendar/RenderCells";
 
 const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -55,14 +23,20 @@ const Calendar = () => {
 
     return (
         <Layout>
-            <div className="flex justify-center h-screen">
-                <div className="w-5/6 border-2 border-purple-400 rounded-lg shadow">
-                <RenderHeader
-                    currentMonth={currentMonth}
-                    prevMonth={prevMonth}
-                    nextMonth={nextMonth}
-                />
-                <RenderDays />
+            <div className="flex justify-center h-screen mt-2">
+                <div className="calendar">
+                    <RenderHeader
+                        currentMonth={currentMonth}
+                        prevMonth={prevMonth}
+                        nextMonth={nextMonth}
+                    />
+                    <RenderDays />
+                    <RenderCells
+                        currentMonth={currentMonth}
+                        selectedDate={selectedDate}
+                        onDateClick={onDateClick}
+                    />
+                    
                 </div>
             </div>
             

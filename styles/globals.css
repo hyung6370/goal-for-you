@@ -92,3 +92,17 @@ html {
 }
 
 
+.disabled {
+    @apply
+    text-gray-400
+}
+
+.cells_design {
+    @apply
+    flex flex-row justify-between space-x-4
+}
+
+.block {
+    @apply
+    bg-purple-300
+}
