@@ -11,6 +11,19 @@ const AddgoalModal = () => {
   const addgoalModal = useAddgoalModal();
   const [isLoading, setIsLoading] = useState(false);
 
+  const {
+    register,
+    handleSubmit,
+    formState: {
+      errors,
+    }
+  } = useForm<FieldValues>({
+    defaultValues: {
+      goalName: '',
+      
+    }
+  })
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
@@ -43,7 +56,7 @@ const AddgoalModal = () => {
         title="Add Goal!"
         actionLabel="Complete"
         onClose={addgoalModal.onClose}
-        // onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit)}
         body={bodyContent}
       />
     </div>

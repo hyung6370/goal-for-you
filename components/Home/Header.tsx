@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { getSession, signOut } from "next-auth/react";
 import { NextPageContext } from "next";
 import Link from "next/link";
 import AddgoalModal from "../modal/AddgoalModal";
 import MenuItem from "./MenuItem";
 import { BsPlusCircle } from "react-icons/bs";
+import useAddgoalModal from "@/hooks/useAddgoalModal";
+
 
 export async function getServerSideProps(context: NextPageContext) {
     const session = await getSession(context);
@@ -22,7 +24,14 @@ export async function getServerSideProps(context: NextPageContext) {
     }
 }
 
-export default function Header() {
+const Header = () => {
+    const addgoalModal = useAddgoalModal();
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleOpen = useCallback(() => {
+        setIsOpen((value) => !value);
+    }, []);
+
     return (
         <div>
             <div className="flex flex-row items-center justify-between px-4 py-6 transition duration-500 md:px-16">
@@ -33,9 +42,10 @@ export default function Header() {
                     </div>
                 </Link>
                 
+                <AddgoalModal />
                 <div className="flex flex-row">
                     <MenuItem
-                        onClick={() => {}}
+                        onClick={addgoalModal.onOpen}
                         label="Add your goals"
                         
                     />
@@ -52,3 +62,5 @@ export default function Header() {
       );
     
 }
+
+export default Header;

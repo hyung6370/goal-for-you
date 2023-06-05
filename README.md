@@ -24,6 +24,7 @@
 - TypeScript
 - TailwindCSS & Sass
 - NextAuth
+- Zustand
 
 ### **Back-End**
 - Node.js
