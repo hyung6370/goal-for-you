@@ -2,6 +2,9 @@ import React from "react";
 import { getSession, signOut } from "next-auth/react";
 import { NextPageContext } from "next";
 import Link from "next/link";
+import AddgoalModal from "../modal/AddgoalModal";
+import MenuItem from "./MenuItem";
+import { BsPlusCircle } from "react-icons/bs";
 
 export async function getServerSideProps(context: NextPageContext) {
     const session = await getSession(context);
@@ -29,11 +32,19 @@ export default function Header() {
                         <h1 className="ml-2 text-2xl font_here">Goal for you</h1>
                     </div>
                 </Link>
-                <button
-                    onClick={() => signOut()}
-                    className="mb-1 logout_btn font_kor_medium">
-                    Logout
-                </button>
+                
+                <div className="flex flex-row">
+                    <MenuItem
+                        onClick={() => {}}
+                        label="Add your goals"
+                        
+                    />
+                    <button
+                        onClick={() => signOut()}
+                        className="flex justify-center mb-1 ml-3 logout_btn font_kor_medium">
+                        Logout
+                    </button>
+                </div>
             </div>
             
             <hr className="border-gray-400 border-1" />

@@ -1,8 +1,8 @@
-import Layout from "@/components/Home/Layout";
+import Layout from "@/components/home/Layout";
 import React from "react";
 import { getSession, signOut } from "next-auth/react";
 import { NextPageContext } from "next";
-import Animation from "@/components/Home/Animation";
+import Animation from "@/components/home/Animation";
 import Link from "next/link";
 import useCurrentUser from "@/hooks/useCurrentUser";
 

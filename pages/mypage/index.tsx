@@ -1,4 +1,4 @@
-import Layout from "@/components/Home/Layout";
+import Layout from "@/components/home/Layout";
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 

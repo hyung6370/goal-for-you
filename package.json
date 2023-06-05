@@ -24,11 +24,14 @@
     "node-sass": "^9.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.44.3",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.9.0",
     "react-lottie-player": "^1.5.4",
     "sass": "^1.62.1",
     "swr": "^2.1.5",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

@@ -1,4 +1,4 @@
-import Input from "@/components/Auth/Input";
+import Input from "@/components/auth/Input";
 import axios from "axios";
 import { useCallback, useState } from "react";
 import { signIn } from 'next-auth/react';
