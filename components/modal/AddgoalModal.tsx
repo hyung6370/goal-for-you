@@ -5,6 +5,8 @@ import Modal from "./Modal";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Heading from "./Heading";
+import { BsCheckLg } from "react-icons/bs";
+import Input from "./Input";
 
 
 const AddgoalModal = () => {
@@ -45,6 +47,36 @@ const AddgoalModal = () => {
         title="목표를 추가해주세요!"
         subtitle="please setting your goal!"
       />
+
+        <div>
+          <div className="flex flex-row">
+            <BsCheckLg size={40}/>
+            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Goal's title</h1>
+          </div>
+          <Input 
+              id="goalName"
+              label="title name"
+              disabled={isLoading}
+              register={register}
+              errors={errors}
+              required
+            />
+        </div>
+        <div>
+          <div className="flex flex-row">
+            <BsCheckLg size={40}/>
+            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Goal's period</h1>
+          </div>
+          
+        </div>
+        <div>
+          <div className="flex flex-row">
+            <BsCheckLg size={40}/>
+            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Goal's categori</h1>
+          </div>
+          
+        </div>
+        
     </div>
   )
 

@@ -99,7 +99,7 @@ const Modal: React.FC<ModalProps> = ({
                 >
                   <IoMdClose size={18} />
                 </button>
-                <div className="text-xl font-semibold font_here">
+                <div className="text-2xl font-semibold font_here">
                   {title}
                 </div>
               </div>
