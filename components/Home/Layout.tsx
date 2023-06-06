@@ -1,7 +1,9 @@
+
+
 import React, { ReactNode } from "react"
 import Header from "./Header";
 import Footer from "./Footer";
-import Hero from "./Hero";
+import Hero from './Hero';
 
 interface LayoutProps {
     children: ReactNode;

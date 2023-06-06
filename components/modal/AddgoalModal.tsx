@@ -1,3 +1,4 @@
+
 import useAddgoalModal from "@/hooks/useAddgoalModal";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -44,7 +45,7 @@ const AddgoalModal = () => {
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="목표를 추가해주세요!"
+        title="목표를 생성해주세요!"
         subtitle="please setting your goal!"
       />
 
@@ -72,7 +73,7 @@ const AddgoalModal = () => {
         <div>
           <div className="flex flex-row">
             <BsCheckLg size={40}/>
-            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Goal's categori</h1>
+            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Goal's category</h1>
           </div>
           
         </div>
