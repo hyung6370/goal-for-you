@@ -1,14 +1,10 @@
-
-
 import React, { useCallback, useState } from "react";
 import { getSession, signOut } from "next-auth/react";
 import { NextPageContext } from "next";
 import Link from "next/link";
 import AddgoalModal from "../modal/AddgoalModal";
 import MenuItem from "./MenuItem";
-import { BsPlusCircle } from "react-icons/bs";
 import useAddgoalModal from "@/hooks/useAddgoalModal";
-
 
 export async function getServerSideProps(context: NextPageContext) {
     const session = await getSession(context);
@@ -26,7 +22,7 @@ export async function getServerSideProps(context: NextPageContext) {
     }
 }
 
-const Header = () => {
+const Header= () => {
     const addgoalModal = useAddgoalModal();
     const [isOpen, setIsOpen] = useState(false);
 

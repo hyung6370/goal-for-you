@@ -5,6 +5,8 @@ import { NextPageContext } from "next";
 import Animation from "@/components/home/Animation";
 import Link from "next/link";
 import useCurrentUser from "@/hooks/useCurrentUser";
+import Head from "next/head";
+
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -26,9 +28,11 @@ export default function Home() {
   const { data: user } = useCurrentUser();
 
 
-
   return (
     <div className="flex relative h-full w-full bg-[url('/img/hero.jpg')]">
+      <Head>
+        <title>Goal for you</title>
+      </Head>
       <div className="flex flex-row justify-center">
         <div className="flex items-center w-2/5 h-screen">
           <Animation />

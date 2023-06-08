@@ -63,6 +63,18 @@
     transition transform duration-100 ease-out
 }
 
+.tags_btn {
+    @apply
+    flex w-20 h-7 flex-col flex-wrap
+    rounded-3xl
+    border-2 border-neutral-400 text-neutral-400
+    hover:border-fuchsia-400
+    items-center mt-3 mr-2 hover:text-fuchsia-400
+    transition 
+    transform 
+    duration-100 ease-out
+}
+
 .font_kor_medium {
     font-family: GmarketSansTTFMedium;
 }

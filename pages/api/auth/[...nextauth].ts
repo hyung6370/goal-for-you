@@ -9,7 +9,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 import prismadb from '@/lib/prismadb';
 
-export default NextAuth({
+export default NextAuth ({
     providers: [
         GithubProvider({
             clientId: process.env.GITHUB_ID || '',

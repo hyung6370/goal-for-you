@@ -1,4 +1,3 @@
-
 import useAddgoalModal from "@/hooks/useAddgoalModal";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -8,6 +7,8 @@ import toast from "react-hot-toast";
 import Heading from "./Heading";
 import { BsCheckLg } from "react-icons/bs";
 import Input from "./Input";
+import categories from "../home/Categories";
+import CategoryInput from "./CategoryInput";
 
 
 const AddgoalModal = () => {
@@ -17,6 +18,8 @@ const AddgoalModal = () => {
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     formState: {
       errors,
     }
@@ -26,6 +29,17 @@ const AddgoalModal = () => {
       
     }
   })
+
+
+  const category = watch('category');
+  const setCustomValue = (id: string, value: any) => {
+    setValue(id, value, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true
+    })
+  }
+
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
@@ -41,7 +55,6 @@ const AddgoalModal = () => {
         setIsLoading(false);
       })
   }
-
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
@@ -75,7 +88,16 @@ const AddgoalModal = () => {
             <BsCheckLg size={40}/>
             <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Goal's category</h1>
           </div>
-          
+          {/* {categories.map((item) => (
+          <div key={item.label} className="col-span-1">
+            <CategoryInput
+              onClick={(category) => 
+                setCustomValue('category', category)}
+              selected={category === item.label}
+              label={item.label}
+            />
+          </div>
+        ))} */}
         </div>
         
     </div>
