@@ -14,16 +14,16 @@ const CategoryInput: React.FC<CategoryInputProps> = ({
     <div
       onClick={() => onClick(label)}
       className={`
-        rounded-xl
+        rounded-full
         border-2
         p-4
         flex
         flex-col
         gap-3
-        hover:border-black
+        hover:border-fuchsia-400
         transition
         cursor-pointer
-        ${selected ? 'border-black' : 'border-neutral-200'}
+        ${selected ? 'border-fuchsia-400' : 'border-neutral-200'}
       `}
     >
         <div className="font-semibold">

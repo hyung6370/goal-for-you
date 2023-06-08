@@ -5,12 +5,14 @@ import { IoFootball } from "react-icons/io5";
 import { GoClock } from "react-icons/go";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
+import { CiMemoPad } from "react-icons/ci";
 import { GrPlan } from "react-icons/gr";
 import { TbBeach } from "react-icons/tb";
 import { GiPlanetConquest } from "react-icons/gi";
+import Container from "../Container";
 
 
-export const categoris = [
+export const categories = [
   {
     label: 'Study',
     icon: ImPencil2,
@@ -38,7 +40,7 @@ export const categoris = [
   },
   {
     label: 'Planning',
-    icon: GrPlan,
+    icon: CiMemoPad,
     description: '계획 이루기!'
   },
   {
@@ -53,16 +55,23 @@ export const categoris = [
   },
 ]
 
-const Categoris = () => {
+const Categories = () => {
   const params = useSearchParams();
   const category = params?.get('category');
+  const pathname = usePathname();
+
+  const isMainPage = pathname === '/ongoing';
+
+  if (!isMainPage) {
+    return null;
+  }
 
   return ( 
-    <div>
+    <div className="ml-14 mr-14">
       <div
         className="flex flex-row items-center justify-between gap-1 pt-4 overflow-x-auto"
       >
-        {categoris.map((item) => (
+        {categories.map((item) => (
           <CategoryBox
             key={item.label}
             label={item.label}
@@ -75,4 +84,4 @@ const Categoris = () => {
   );
 }
  
-export default Categoris;
+export default Categories;

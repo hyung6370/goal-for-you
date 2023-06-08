@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import Heading from "./Heading";
 import { BsCheckLg } from "react-icons/bs";
 import Input from "./Input";
-import categories from "../home/Categories";
+import { categories } from "../home/Categories";
 import CategoryInput from "./CategoryInput";
 
 
@@ -65,7 +65,7 @@ const AddgoalModal = () => {
         <div>
           <div className="flex flex-row">
             <BsCheckLg size={40}/>
-            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Goal's title</h1>
+            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">title</h1>
           </div>
           <Input 
               id="goalName"
@@ -79,16 +79,28 @@ const AddgoalModal = () => {
         <div>
           <div className="flex flex-row">
             <BsCheckLg size={40}/>
-            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Goal's period</h1>
+            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">period</h1>
           </div>
           
         </div>
         <div>
           <div className="flex flex-row">
             <BsCheckLg size={40}/>
-            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Goal's category</h1>
+            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">category</h1>
           </div>
-          {/* {categories.map((item) => (
+          
+        </div>
+        <div 
+        className="
+          grid 
+          grid-cols-1 
+          md:grid-cols-2 
+          gap-3
+          max-h-[50vh]
+          overflow-y-auto
+        "
+      >
+        {categories.map((item) => (
           <div key={item.label} className="col-span-1">
             <CategoryInput
               onClick={(category) => 
@@ -97,9 +109,8 @@ const AddgoalModal = () => {
               label={item.label}
             />
           </div>
-        ))} */}
-        </div>
-        
+        ))}
+      </div>
     </div>
   )
 

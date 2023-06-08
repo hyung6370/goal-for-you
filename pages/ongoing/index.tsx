@@ -1,9 +1,10 @@
+import Categories from "@/components/home/Categories";
 import Layout from "@/components/home/Layout";
 
 const Ongoing = () => {
     return (
         <Layout>
-            온고잉 페이지!
+            <Categories />
         </Layout>
     )
 }
