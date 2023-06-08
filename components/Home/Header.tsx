@@ -6,6 +6,8 @@ import AddgoalModal from "../modal/AddgoalModal";
 import MenuItem from "./MenuItem";
 import useAddgoalModal from "@/hooks/useAddgoalModal";
 import useCurrentUser from "@/hooks/useCurrentUser";
+import useLogoutModal from "@/hooks/useLogoutModal";
+import LogoutModal from "../modal/LogoutModal";
 
 export async function getServerSideProps(context: NextPageContext) {
     const session = await getSession(context);
@@ -25,6 +27,7 @@ export async function getServerSideProps(context: NextPageContext) {
 
 const Header= () => {
     const addgoalModal = useAddgoalModal();
+    const logoutModal = useLogoutModal();
     const [isOpen, setIsOpen] = useState(false);
     const { data: user } = useCurrentUser();
 
@@ -43,6 +46,7 @@ const Header= () => {
                 </Link>
                 
                 <AddgoalModal />
+                <LogoutModal />
                 <div className="flex flex-row">
                     <div className="flex items-center justify-center mt-1 mr-3 font_kor_light">
                         <div className="text-purple-700 border-black font_kor_medium">{user?.name}</div>
@@ -54,7 +58,8 @@ const Header= () => {
                         
                     />
                     <button
-                        onClick={() => signOut()}
+                        // onClick={() => signOut()}
+                        onClick={logoutModal.onOpen}
                         className="flex justify-center mb-1 ml-3 logout_btn font_kor_medium">
                         Logout
                     </button>

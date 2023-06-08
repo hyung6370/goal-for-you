@@ -4,6 +4,24 @@ import { format, addMonths, subMonths } from 'date-fns';
 import RenderHeader from "@/components/calendar/RenderHeader";
 import RenderDays from "@/components/calendar/RenderDays";
 import RenderCells from "@/components/calendar/RenderCells";
+import { NextPageContext } from "next";
+import { getSession } from "next-auth/react";
+
+export async function getServerSideProps(context: NextPageContext) {
+    const session = await getSession(context);
+
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/auth',
+                permanent: false,
+            }
+        }
+    }
+    return {
+        props: {}
+    }
+}
 
 const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date());

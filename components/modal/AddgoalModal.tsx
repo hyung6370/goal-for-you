@@ -10,7 +10,6 @@ import Input from "./Input";
 import { categories } from "../home/Categories";
 import CategoryInput from "./CategoryInput";
 
-
 const AddgoalModal = () => {
   const addgoalModal = useAddgoalModal();
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +28,6 @@ const AddgoalModal = () => {
       
     }
   })
-
 
   const category = watch('category');
   const setCustomValue = (id: string, value: any) => {
