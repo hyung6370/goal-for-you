@@ -105,6 +105,7 @@ const AddgoalModal = () => {
                 setCustomValue('category', category)}
               selected={category === item.label}
               label={item.label}
+              icon={item.icon}
             />
           </div>
         ))}
