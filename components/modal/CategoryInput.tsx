@@ -28,10 +28,11 @@ const CategoryInput: React.FC<CategoryInputProps> = ({
         transition
         cursor-pointer
         ${selected ? 'border-fuchsia-400' : 'border-neutral-200'}
+        ${selected ? 'text-fuchsia-800' : 'text-neutral-600'}
       `}
     >   
         <Icon size={20} className="" />
-        <div className="font-semibold">
+        <div className="text-sm font_kor_light">
           {label}
         </div>
     </div>

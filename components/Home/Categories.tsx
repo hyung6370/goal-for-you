@@ -1,15 +1,13 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import CategoryBox from "./CategoryBox";
 import { ImPencil2 } from "react-icons/im";
-import { IoFootball } from "react-icons/io5";
 import { GoClock } from "react-icons/go";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { CiMemoPad } from "react-icons/ci";
-import { GrPlan } from "react-icons/gr";
 import { TbBeach } from "react-icons/tb";
 import { GiPlanetConquest } from "react-icons/gi";
-import Container from "../Container";
+import { FaRunning } from "react-icons/fa";
 
 
 export const categories = [
@@ -20,7 +18,7 @@ export const categories = [
   },
   {
     label: 'Exercise',
-    icon: IoFootball,
+    icon: FaRunning,
     description: '운동 목표 이루기!'
   },
   {
