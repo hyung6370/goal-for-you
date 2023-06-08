@@ -5,6 +5,7 @@ import Link from "next/link";
 import AddgoalModal from "../modal/AddgoalModal";
 import MenuItem from "./MenuItem";
 import useAddgoalModal from "@/hooks/useAddgoalModal";
+import useCurrentUser from "@/hooks/useCurrentUser";
 
 export async function getServerSideProps(context: NextPageContext) {
     const session = await getSession(context);
@@ -25,6 +26,7 @@ export async function getServerSideProps(context: NextPageContext) {
 const Header= () => {
     const addgoalModal = useAddgoalModal();
     const [isOpen, setIsOpen] = useState(false);
+    const { data: user } = useCurrentUser();
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value);
@@ -42,6 +44,10 @@ const Header= () => {
                 
                 <AddgoalModal />
                 <div className="flex flex-row">
+                    <div className="flex items-center justify-center mt-1 mr-3 font_kor_light">
+                        <div className="text-purple-700 border-black font_kor_medium">{user?.name}</div>
+                        의 Workspace
+                    </div>
                     <MenuItem
                         onClick={addgoalModal.onOpen}
                         label="Add your goals"
