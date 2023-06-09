@@ -8,6 +8,8 @@ import useAddgoalModal from "@/hooks/useAddgoalModal";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useLogoutModal from "@/hooks/useLogoutModal";
 import LogoutModal from "../modal/LogoutModal";
+import { BiLogOut } from "react-icons/bi";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 
 export async function getServerSideProps(context: NextPageContext) {
     const session = await getSession(context);
@@ -52,17 +54,21 @@ const Header= () => {
                         <div className="text-purple-700 border-black font_kor_medium">{user?.name}</div>
                         의 Workspace
                     </div>
+                    <div>
                     <MenuItem
                         onClick={addgoalModal.onOpen}
                         label="Add your goals"
-                        
                     />
+                    </div>
+                    
                     <button
                         // onClick={() => signOut()}
                         onClick={logoutModal.onOpen}
                         className="flex justify-center mb-1 ml-3 logout_btn font_kor_medium">
+                        <BiLogOut className="mr-1"/>
                         Logout
                     </button>
+                    
                 </div>
             </div>
             
