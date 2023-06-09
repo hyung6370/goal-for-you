@@ -21,7 +21,14 @@ model User {
   updatedAt DateTime @updatedAt
   sessions Session[]
   accounts Account[]
+  // listings Listing[]
 }
+
+// model Listing {
+//   id String @id @default(auto()) @map("_id") @db.ObjectId
+//   title String
+//   create
+// }
 
 model Account {
   id String @id @default(auto()) @map("_id") @db.ObjectId

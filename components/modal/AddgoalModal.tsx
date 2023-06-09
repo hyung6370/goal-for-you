@@ -63,7 +63,7 @@ const AddgoalModal = () => {
         <div>
           <div className="flex flex-row">
             <BsCheckLg size={40}/>
-            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">title</h1>
+            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Title</h1>
           </div>
           <Input 
               id="goalName"
@@ -77,14 +77,28 @@ const AddgoalModal = () => {
         <div>
           <div className="flex flex-row">
             <BsCheckLg size={40}/>
-            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">period</h1>
+            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Description</h1>
+          </div>
+          <Input 
+              id="goalDescription"
+              label="Description"
+              disabled={isLoading}
+              register={register}
+              errors={errors}
+              required
+            />
+        </div>
+        <div>
+          <div className="flex flex-row">
+            <BsCheckLg size={40}/>
+            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Period</h1>
           </div>
           
         </div>
         <div>
           <div className="flex flex-row">
             <BsCheckLg size={40}/>
-            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">category</h1>
+            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Category</h1>
           </div>
           
         </div>
