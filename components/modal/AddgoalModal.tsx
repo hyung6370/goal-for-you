@@ -24,10 +24,11 @@ const AddgoalModal = () => {
     }
   } = useForm<FieldValues>({
     defaultValues: {
-      goalName: '',
-      
+      title: '',
+      description: '',
+      category: ''
     }
-  })
+  });
 
   const category = watch('category');
   const setCustomValue = (id: string, value: any) => {
