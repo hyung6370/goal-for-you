@@ -20,7 +20,7 @@ const CategoryInput: React.FC<CategoryInputProps> = ({
       className={`
         rounded-full
         border-2
-        p-4
+        p-2
         flex
         flex-row
         gap-3
@@ -31,7 +31,7 @@ const CategoryInput: React.FC<CategoryInputProps> = ({
         ${selected ? 'text-fuchsia-800' : 'text-neutral-600'}
       `}
     >   
-        <Icon size={20} className="" />
+        <Icon size={18} className="" />
         <div className="text-sm font_kor_light">
           {label}
         </div>
