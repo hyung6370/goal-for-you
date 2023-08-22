@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb";
 import getCurrentUser from "@/actions/getCurrentUser";
 
-export async function POST (
-  request: Request
+export async function POST(
+  request: Request,
 ) {
   const currentUser = await getCurrentUser();
 
@@ -17,27 +17,34 @@ export async function POST (
     description,
     category,
     startDate,
-    endDate
+    endDate,
   } = body;
 
   Object.keys(body).forEach((value: any) => {
     if (!body[value]) {
-      NextResponse.error();
+      return NextResponse.error();
     }
   });
 
-  const listing = await prisma.listing.create({
-    data: {
-      title,
-      description,
-      category,
-      startDate,
-      endDate,
-      userId: currentUser.id
-    }
-  })
-
-  return NextResponse.json(listing);
+  try {
+    const listing = await prisma.listing.create({
+    
+      data: {
+        title,
+        description,
+        category,
+        startDate,
+        endDate,
+        userId: currentUser.id
+      }
+    });
+  
+    return NextResponse.json(listing);
+  }
+  catch (error) {
+    console.error("Error creating listing: ", error);
+    return NextResponse.json({ status: 500, message: 'Error creating listing' });
+  }
+  
 }
-
 

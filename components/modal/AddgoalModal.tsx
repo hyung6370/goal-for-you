@@ -10,7 +10,7 @@ import Input from "./Input";
 import { categories } from "../home/Categories";
 import CategoryInput from "./CategoryInput";
 import { useRouter } from "next/navigation";
-import { DateRange, Range } from "react-date-range";
+import { DateRange, Range, DateRangePicker } from "react-date-range";
 import ListingDate from "./listingDate";
 
 const initialDateRange = {
@@ -19,17 +19,13 @@ const initialDateRange = {
   key: 'selection'
 };
 
+
 const AddgoalModal = () => {
   const router = useRouter();
   const addgoalModal = useAddgoalModal();
+  
   const [isLoading, setIsLoading] = useState(false);
   const [dateRange, setDateRange] = useState<Range>(initialDateRange);
-
-  // const disabledDates = useMemo(() => {
-  //   let dates: Date[] = [];
-    
-    
-  // }, []);
 
   const {
     register,
@@ -39,17 +35,17 @@ const AddgoalModal = () => {
     formState: {
       errors,
     },
-    reset
+    reset,
   } = useForm<FieldValues>({
     defaultValues: {
       title: '',
       description: '',
-      category: ''
+      category: '',
+      startDate: '',
+      endDate: '',
     }
   });
 
-  // const startDate = watch('startDate');
-  // const endDate = watch('endDate');
   const category = watch('category');
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -59,12 +55,14 @@ const AddgoalModal = () => {
     })
   }
 
-
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    data.startDate = dateRange.startDate;
+    data.endDate = dateRange.endDate;
+    
     setIsLoading(true);
-
+    
     axios.post('/api/listings', data)
-      .then(() => {
+    .then(() => {
         toast.success('새로운 Goal이 생성되었습니다!');
         router.refresh();
         reset();
@@ -77,7 +75,8 @@ const AddgoalModal = () => {
         setIsLoading(false);
       })
   }
-  const bodyContent = (
+
+  let bodyContent = (
     <div className="flex flex-col gap-4">
       <div className="hidden sm:block">
         <Heading
@@ -88,12 +87,12 @@ const AddgoalModal = () => {
 
         <div>
           <div className="flex flex-row">
-            <BsCheckLg size={40}/>
-            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Title</h1>
+            <BsCheckLg size={35}/>
+            <h1 className="flex justify-center mt-1 ml-2 text-xl text-purple-600 font_here">Title</h1>
           </div>
           <Input 
-              id="goalName"
-              label="title name"
+              id="title"
+              label="Title"
               disabled={isLoading}
               register={register}
               errors={errors}
@@ -102,11 +101,11 @@ const AddgoalModal = () => {
         </div>
         <div>
           <div className="flex flex-row">
-            <BsCheckLg size={40}/>
-            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Description</h1>
+            <BsCheckLg size={35}/>
+            <h1 className="flex justify-center mt-1 ml-2 text-xl text-purple-600 font_here">Description</h1>
           </div>
           <Input 
-              id="goalDescription"
+              id="description"
               label="Description"
               disabled={isLoading}
               register={register}
@@ -114,55 +113,69 @@ const AddgoalModal = () => {
               required
             />
         </div>
-        <div>
-          <div className="flex flex-row">
-            <BsCheckLg size={40}/>
-            <h1 className="flex justify-center mt-1 ml-2 text-2xl text-purple-600 font_here">Period</h1>
-          </div>
-          <div className="flex justify-between">
-            <ListingDate
-              onChangeDate={(value) => setDateRange(value)}
-              dateRange={dateRange}
-              disabled={isLoading}
-              // disabledDates={disabledDates}
-            />
-          </div>
-        </div>
-        <div>
-          <div className="flex flex-row">
-            <BsCheckLg size={40}/>
-            <h1 className="flex justify-center ml-2 text-2xl text-purple-600 font_here">Category</h1>
-          </div>
-          
-        </div>
-        <div 
-        className="
-          grid 
-          grid-cols-4
-          sm:grid-cols-4 
-          md:grid-cols-4 
-          lg:grid-cols-4 
-          xl:grid-cols-4 
-          2xl:grid-cols-4 
-          gap-3
-          max-h-[50vh]
-          overflow-y-auto
-        "
-      >
-        {categories.map((item) => (
-          <div key={item.label} className="col-span-1">
-            <CategoryInput
-              onClick={(category) => 
-                setCustomValue('category', category)}
-              selected={category === item.label}
-              label={item.label}
-              icon={item.icon}
-            />
-          </div>
-        ))}
         
-      </div>
-    </div>
+          <div>
+            <div className="flex flex-row">
+              <BsCheckLg size={35}/>
+              <h1 className="flex justify-center mt-1 ml-2 text-xl text-purple-600 font_here">Period</h1>
+            </div>
+            <div className="flex">
+              <ListingDate
+                onChangeDate={(value) => setDateRange(value)}
+                dateRange={dateRange}
+                disabled={isLoading}
+                // disabledDates={disabledDates}
+              />
+              <div className="flex flex-col justify-center mt-4 ml-4">
+                <div className="text-purple-600 font_here">
+                  Start Date <span className="text-black">{dateRange.startDate && dateRange.startDate.toLocaleDateString()}</span>
+                </div>
+                
+                <div className="mt-3 text-purple-600 font_here">
+                  End Date <span className="text-black">{dateRange.endDate && dateRange.endDate.toLocaleDateString()}</span>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+          <div className="">
+            <div className="flex flex-row">
+              <BsCheckLg size={35}/>
+              <h1 className="flex justify-center mt-1 ml-2 text-xl text-purple-600 font_here">Category</h1>
+            </div>
+            
+            <div 
+              className="
+                mt-7
+                grid 
+                grid-cols-4
+                sm:grid-cols-4
+                md:grid-cols-4 
+                lg:grid-cols-4 
+                xl:grid-cols-4 
+                2xl:grid-cols-4
+                gap-4
+                max-h-[50vh]
+                overflow-y-auto
+              "
+            >
+              {categories.map((item) => (
+                <div key={item.label} className="col-span-1">
+                  <CategoryInput
+                    onClick={(category) => 
+                      setCustomValue('category', category)}
+                    selected={category === item.label}
+                    label={item.label}
+                    icon={item.icon}
+                  />
+                </div>
+              ))}
+            
+            </div>
+          </div>
+        </div>
+        
   )
 
   return ( 

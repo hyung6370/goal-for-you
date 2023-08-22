@@ -14,6 +14,7 @@ const ListingDate: React.FC<ListingDateProps> = ({
   disabled,
   // disabledDates
 }) => {
+
   return ( 
     <div>
       <PickerCalendar
@@ -21,6 +22,7 @@ const ListingDate: React.FC<ListingDateProps> = ({
         // disabledDates={disabledDates}
         onChange={(value) => 
           onChangeDate(value.selection)}
+
       />
     </div>
    );

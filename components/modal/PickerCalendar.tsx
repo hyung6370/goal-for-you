@@ -25,6 +25,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
       minDate={new Date()}
       // disabledDates={disabledDates}
     />
+    
   );
 }
 
